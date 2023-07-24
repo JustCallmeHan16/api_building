@@ -2,14 +2,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//* create blog schema
-const blogSchema = new Schema(
+//* create artist schema
+const artistSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
-    body: {
+    song: {
       type: String,
       required: true,
     },
@@ -17,4 +17,4 @@ const blogSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Blog", blogSchema);
+module.exports = mongoose.model("Artist", artistSchema);

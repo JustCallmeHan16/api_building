@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const db = require("./database/mongodb");
 
-const blogRoutes = require("./routes/blog");
+const blogRoutes = require("./routes/artist");
 
 db();
 
@@ -19,5 +19,5 @@ app.use("/api", blogRoutes);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log(`Server was listen on http://localhost:${PORT}/api/blog`);
+  console.log(`Server was listen on http://localhost:${PORT}/api/artist`);
 });
