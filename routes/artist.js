@@ -16,14 +16,22 @@ const {
   deleteArtistMiddleware,
 } = require("../middleware/artistMiddleware");
 
-router.get("/artist", getAllArtists);
+const { authorizationMiddleware } = require("../auth/authMiddleware");
 
-router.get("/artist/:id", getByIdMiddleware, getArtistById);
+router.use(authorizationMiddleware);
 
-router.post("/artist", createNewArtistMiddleware, createArtist);
+router.get("/", getAllArtists);
 
-router.delete("/artist/:id", deleteArtistMiddleware, deleteArtistById);
+router.get("/:id", getByIdMiddleware, getArtistById);
 
-router.patch("/artist/:id", updateArtistMiddleware, updateArtist);
+router.post("/", createNewArtistMiddleware, createArtist);
+
+router.delete("/:id", deleteArtistMiddleware, deleteArtistById);
+
+router.patch("/:id", updateArtistMiddleware, updateArtist);
+
+router.use("*", (req, res) => {
+  res.redirect("/api/artist");
+});
 
 module.exports = router;

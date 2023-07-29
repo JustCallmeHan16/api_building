@@ -4,7 +4,8 @@ const express = require("express");
 const app = express();
 const db = require("./database/mongodb");
 
-const blogRoutes = require("./routes/artist");
+const artistRoutes = require("./routes/artist");
+const userRoutes = require("./routes/user");
 
 db();
 
@@ -14,7 +15,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api", blogRoutes);
+app.use("/api/artist", artistRoutes);
+app.use("/api/user", userRoutes);
 
 const PORT = process.env.PORT;
 
